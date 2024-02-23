@@ -45,6 +45,7 @@ const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'user/addUser':
       return {
+        ...state,
         contacts: {
           items: [...state.contacts.items, action.payload],
         },
@@ -52,6 +53,7 @@ const rootReducer = (state = initialState, action) => {
 
     case 'user/deleteUser':
       return {
+        ...state,
         contacts: {
           items: [
             ...state.contacts.items.filter(
@@ -63,11 +65,12 @@ const rootReducer = (state = initialState, action) => {
 
     case 'filters/changeFilter':
       console.log(action.payload);
-    //   return {
-    //     filters: {
-    //       name: action.payload,
-    //     },
-    //   };
+      return {
+        ...state,
+        filters: {
+          name: action.payload,
+        },
+      };
 
     default:
       return state;
