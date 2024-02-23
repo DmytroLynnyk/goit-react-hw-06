@@ -13,6 +13,14 @@ export const addUser = ({ name, number }) => {
   };
 };
 
+export const deleteUser = id => {
+  console.log(id);
+  return {
+    type: 'user/deleteUser',
+    payload: { id },
+  };
+};
+
 const initialState = {
   contacts: {
     items: [
@@ -29,14 +37,29 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'user/addUser':
+      const index = state.contacts.items.findIndex(
+        task => task.id === action.payload
+      );
       return {
         contacts: {
           items: [...state.contacts.items, action.payload],
         },
       };
-  }
 
-  return state;
+    case 'user/deleteUser':
+      return {
+        contacts: {
+          items: [
+            ...state.contacts.items.filter(
+              item => item.id !== action.payload.id
+            ),
+          ],
+        },
+      };
+
+    default:
+      return state;
+  }
 };
 
 export const store = createStore(rootReducer, devToolsEnhancer());
