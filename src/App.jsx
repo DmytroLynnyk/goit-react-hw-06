@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import './App.css';
+import { useEffect, useState } from 'react';
 import { ContactList } from './components/contactlist/contactlist';
 import { SearchBox } from './components/searchbox/searchbox';
 import { ContactForm } from './components/contactform/contactform';
