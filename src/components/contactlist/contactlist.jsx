@@ -1,4 +1,4 @@
-import { Contact } from '../contact/contact';
+import { Contact } from '../Contact/contact';
 import css from './contactlist.module.css';
 
 export const ContactList = ({ users, deletUser }) => {

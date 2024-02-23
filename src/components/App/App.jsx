@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import { ContactList } from './components/contactlist/contactlist';
-import { SearchBox } from './components/searchbox/searchbox';
-import { ContactForm } from './components/contactform/contactform';
+import { ContactList } from '../ContactList/contactlist';
+import { SearchBox } from '../SearchBox/searchbox';
+import { ContactForm } from '../ContactForm/contactform';
 
 const users = [
   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
