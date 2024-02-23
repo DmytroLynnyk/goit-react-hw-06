@@ -2,9 +2,9 @@ import { useSelector } from 'react-redux';
 import './App.css';
 import { ContactList } from '../ContactList/contactlist';
 import { ContactForm } from '../ContactForm/contactform';
+import { SearchBox } from '../SearchBox/searchbox';
 
 // import { useEffect, useState } from 'react';
-// import { SearchBox } from '../SearchBox/searchbox';
 // import { ContactForm } from '../ContactForm/contactform';
 
 // const users = [
@@ -52,13 +52,11 @@ export const App = () => {
   //   });
   // };
 
-  // const contacts = useSelector(state => state);
-
   return (
     <div>
       <h1>Phonebook</h1>
       <ContactForm />
-      {/* <SearchBox inputValue={inputValue} setInputValue={setInputValue} /> */}
+      <SearchBox />
       <ContactList />
     </div>
   );

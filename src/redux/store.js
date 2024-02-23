@@ -21,6 +21,13 @@ export const deleteUser = id => {
   };
 };
 
+export const changeFilter = newFilter => {
+  return {
+    type: 'filters/changeFilter',
+    payload: newFilter,
+  };
+};
+
 const initialState = {
   contacts: {
     items: [
@@ -30,16 +37,13 @@ const initialState = {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
   },
-  //   filters: {
-  //     name: '',
-  //   },
+  filters: {
+    name: '',
+  },
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'user/addUser':
-      const index = state.contacts.items.findIndex(
-        task => task.id === action.payload
-      );
       return {
         contacts: {
           items: [...state.contacts.items, action.payload],
@@ -56,6 +60,14 @@ const rootReducer = (state = initialState, action) => {
           ],
         },
       };
+
+    case 'filters/changeFilter':
+      console.log(action.payload);
+    //   return {
+    //     filters: {
+    //       name: action.payload,
+    //     },
+    //   };
 
     default:
       return state;
