@@ -3,20 +3,14 @@ import './App.css';
 import { ContactList } from './components/contactlist/contactlist';
 import { SearchBox } from './components/searchbox/searchbox';
 import { ContactForm } from './components/contactform/contactform';
-
-const users = [
-  { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-  { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-  { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-  { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-];
+import initialUsers from './contacts.json';
 
 const getSevedUsers = () => {
   const savedUsers = window.localStorage.getItem('saved-users');
   if (JSON.parse(savedUsers) !== null) {
     return JSON.parse(savedUsers);
   }
-  return users;
+  return initialUsers;
 };
 
 export const App = () => {
