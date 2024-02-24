@@ -1,4 +1,22 @@
-import { nanoid } from '@reduxjs/toolkit';
+import { createAction, createReducer, nanoid } from '@reduxjs/toolkit';
+
+export const addUser = createAction('user/addUser', value => {
+  return {
+    payload: {
+      id: nanoid(),
+      name: value.name,
+      number: value.number,
+    },
+  };
+});
+
+export const deleteUser = createAction('user/deleteUser', value => {
+  return {
+    payload: {
+      id: value,
+    },
+  };
+});
 
 const contactsInitialState = {
   items: [
@@ -9,40 +27,14 @@ const contactsInitialState = {
   ],
 };
 
-export const contactsReducer = (state = contactsInitialState, action) => {
-  switch (action.type) {
-    case 'user/addUser':
-      return {
-        ...state,
-        items: [...state.items, action.payload],
-      };
-
-    case 'user/deleteUser':
-      return {
-        ...state,
-        items: [...state.items.filter(item => item.id !== action.payload.id)],
-      };
-
-    default:
-      return state;
-  }
-};
-
-export const addUser = ({ name, number }) => {
-  return {
-    type: 'user/addUser',
-    payload: {
-      id: nanoid(),
-      name: name,
-      number: number,
-    },
-  };
-};
-
-export const deleteUser = id => {
-  console.log(id);
-  return {
-    type: 'user/deleteUser',
-    payload: { id },
-  };
-};
+export const contactsReducer = createReducer(contactsInitialState, builder =>
+  builder
+    .addCase(addUser, (state, action) => {
+      state.items = [...state.items, action.payload];
+    })
+    .addCase(deleteUser, (state, action) => {
+      state.items = [
+        ...state.items.filter(item => item.id !== action.payload.id),
+      ];
+    })
+);
