@@ -39,7 +39,5 @@ const contactsSlice = createSlice({
   },
 });
 
-console.log(contactsSlice);
-
 export const { addUser, deleteUser } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
