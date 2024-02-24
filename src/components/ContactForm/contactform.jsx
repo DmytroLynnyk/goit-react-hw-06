@@ -32,8 +32,6 @@ export const ContactForm = () => {
         validationSchema={userSchema}
         onSubmit={(values, actions) => {
           dispatch(addUser(values));
-
-          // onAdd({ id: Date.now(), ...values });
           actions.resetForm();
         }}
       >

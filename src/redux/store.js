@@ -64,7 +64,6 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case 'filters/changeFilter':
-      console.log(action.payload);
       return {
         ...state,
         filters: {
